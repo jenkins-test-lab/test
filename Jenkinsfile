@@ -97,10 +97,7 @@ pipeline
                 
                 ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
-                //deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.4:8080/')], contextPath: 'prod', war: '**/multi3*.war'
-            }
-            
-            steps {                
+                sh "echo Ansible playbook pre-install done!."
                 deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.4:8080/')], contextPath: 'prod', war: '**/multi3*.war'
             }
         }
