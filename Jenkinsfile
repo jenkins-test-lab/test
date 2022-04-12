@@ -93,6 +93,7 @@ pipeline
             steps {
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 sh "pwd"
+                sh "ssh-keygen -R 10.1.0.4"
                 
                 ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
