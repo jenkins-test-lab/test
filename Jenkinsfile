@@ -95,7 +95,7 @@ pipeline
                 sh "pwd"
                 sh "ssh-keygen -R 10.1.0.4"
                 
-                ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
+                //ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
                 deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.4:8080/')], contextPath: 'prod', war: '**/multi3*.war'
             }
