@@ -70,6 +70,20 @@ pipeline
                 
                 
             }
+            post {
+                success {
+                    //junit '**/target/surefire-reports/TEST-*.xml'
+                    //archiveArtifacts 'target/*.jar'
+                    publishHTML (target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'AnsibleRepo',
+                        reportFiles: 'test.html',
+                        reportName: "RCov Report"
+                    ])
+                }
+            }
         }
         
         stage('Prod') {
