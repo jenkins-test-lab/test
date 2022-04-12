@@ -94,11 +94,9 @@ pipeline
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 sh "pwd"
                 
-                //ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
+                ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
-                // Run Maven on a Unix agent.
-                //deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://20.224.18.124:8080/')], contextPath: 'test', onFailure: false, war: '**/multi3*.war'
-                //deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.5:8080/')], contextPath: 'test', war: '**/multi3*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.4:8080/')], contextPath: 'prod', war: '**/multi3*.war'
             }
         }
     }
