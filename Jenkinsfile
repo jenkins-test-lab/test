@@ -53,11 +53,12 @@ pipeline
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 sh "pwd"
                 
-                //ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/main.yml',inventory: 'AnsibleRepo/inventory.ini'
+                ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/main.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
+                sh "echo Ansible playbook pre-install done!."
                 // Run Maven on a Unix agent.
                 //deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://20.224.18.124:8080/')], contextPath: 'test', onFailure: false, war: '**/multi3*.war'
-                deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.5:8080/')], contextPath: 'test', war: '**/multi3*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://20.224.65.81:8080/')], contextPath: 'test', war: '**/multi3*.war'
             }
         }
         
@@ -93,12 +94,12 @@ pipeline
             steps {
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 sh "pwd"
-                sh "ssh-keygen -R 10.1.0.4"
+                sh "ssh-keygen -R 20.221.75.185"
                 
                 ansiblePlaybook disableHostKeyChecking: true,playbook: 'AnsibleRepo/ProdDeployment.yml',inventory: 'AnsibleRepo/inventory.ini'
                 
                 sh "echo Ansible playbook pre-install done!."
-                deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://10.1.0.4:8080/')], contextPath: 'prod', war: '**/multi3*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatuser', path: '', url: 'http://20.224.41.180:8080/')], contextPath: 'prod', war: '**/multi3*.war'
             }
         }
     }
