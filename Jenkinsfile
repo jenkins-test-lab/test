@@ -81,7 +81,7 @@ pipeline
                         keepAll: true,
                         reportDir: 'AnsibleRepo',
                         reportFiles: 'test.html',
-                        reportName: "RCov Report"
+                        reportName: "Report"
                     ])
                 }
             }
